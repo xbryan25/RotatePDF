@@ -5,7 +5,7 @@
 
 
 ## Additional purpose
-Refresher in using GitHub and customtkinter practice.
+Refresher in using Git and GitHub and customtkinter practice.
 
 ## Limitations as of the latest version
 - Other complex functionalities (such as having one page rotated while the rest are not, etc.) are
