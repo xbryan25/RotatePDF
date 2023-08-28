@@ -71,7 +71,11 @@ class Buttons:
         # State of entry widget once a rotate button is clicked
         self.entry.configure(state='normal')
         self.entry.delete(0, 'end')
-        self.entry.configure(placeholder_text="Enter save name.")
+
+        # TODO: The issue lies here
+        self.entry.configure(placeholder_text="Enter name.")
+        # self.entry.delete(0, 'end')
+        # self.entry.configure(state="normal")
 
         if direction == 'left':
             self.new_pdf_angle -= 90
@@ -82,8 +86,6 @@ class Buttons:
             self.new_pdf_angle += 90
             if self.new_pdf_angle >= 360:
                 self.new_pdf_angle = 0
-
-        print(self.new_pdf_angle)
 
         if self.new_pdf_angle == 90:
             self.pic_1_label.place_forget()
@@ -138,8 +140,11 @@ class Buttons:
                 self.new_pdf_angle = 0
                 self.old_pdf_angle = 0
             else:
-                self.new_pdf_angle = 360 - (pdf.pages[0].get('/Rotate') * -1)
-                self.old_pdf_angle = 360 - (pdf.pages[0].get('/Rotate') * -1)
+                self.new_pdf_angle = (pdf.pages[0].get('/Rotate'))
+                self.old_pdf_angle = (pdf.pages[0].get('/Rotate'))
+
+                print(f"New: {self.new_pdf_angle}")
+                print(f"New: {self.old_pdf_angle}")
 
             self.left_button.configure(state='normal')
             self.right_button.configure(state='normal')
@@ -183,6 +188,18 @@ class Buttons:
 
             self.entry.delete(0, 'end')
             self.entry.configure(placeholder_text='Process done!')
+            self.entry.configure(state="disabled")
+
+            # Makes the pdf picture stand upright
+
+            self.pic_1_label.place_forget()
+            self.pic_2_label.place_forget()
+            self.pic_3_label.place_forget()
+
+            self.pic_4_label.place(x=250, y=80)
+            self.new_pdf_angle = 0
+
+            self.pdf_label.configure(text="Select a new .pdf to rotate")
 
     def pdf_initial_view(self):
         # This method provides the functionality of being able to view the orientation of the .pdf once it is loaded
