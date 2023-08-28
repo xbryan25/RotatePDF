@@ -187,15 +187,18 @@ class Buttons:
             self.entry.configure(state="disabled")
 
             self.save_button.configure(state="disabled")
+            self.right_button.configure(state="disabled")
+            self.left_button.configure(state="disabled")
 
             # Makes the pdf picture stand upright
 
             self.pic_1_label.place_forget()
             self.pic_2_label.place_forget()
             self.pic_3_label.place_forget()
+            self.pic_4_label.place_forget()
 
-            self.pic_4_label.place(x=258, y=80)
-            self.new_pdf_angle = 0
+            # self.pic_4_label.place(x=258, y=80)
+            # self.new_pdf_angle = 0
 
             self.pdf_label.configure(text="Select a new .pdf to rotate")
 
