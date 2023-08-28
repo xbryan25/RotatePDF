@@ -72,11 +72,6 @@ class Buttons:
         self.entry.configure(state='normal')
         self.entry.delete(0, 'end')
 
-        # TODO: The issue lies here
-        self.entry.configure(placeholder_text="Enter name.")
-        # self.entry.delete(0, 'end')
-        # self.entry.configure(state="normal")
-
         if direction == 'left':
             self.new_pdf_angle -= 90
             if self.new_pdf_angle < 0:
@@ -143,8 +138,9 @@ class Buttons:
                 self.new_pdf_angle = (pdf.pages[0].get('/Rotate'))
                 self.old_pdf_angle = (pdf.pages[0].get('/Rotate'))
 
-                print(f"New: {self.new_pdf_angle}")
-                print(f"New: {self.old_pdf_angle}")
+            if self.new_pdf_angle == 360 or self.old_pdf_angle == 360:
+                self.new_pdf_angle = 0
+                self.old_pdf_angle = 0
 
             self.left_button.configure(state='normal')
             self.right_button.configure(state='normal')
@@ -190,13 +186,15 @@ class Buttons:
             self.entry.configure(placeholder_text='Process done!')
             self.entry.configure(state="disabled")
 
+            self.save_button.configure(state="disabled")
+
             # Makes the pdf picture stand upright
 
             self.pic_1_label.place_forget()
             self.pic_2_label.place_forget()
             self.pic_3_label.place_forget()
 
-            self.pic_4_label.place(x=250, y=80)
+            self.pic_4_label.place(x=258, y=80)
             self.new_pdf_angle = 0
 
             self.pdf_label.configure(text="Select a new .pdf to rotate")
@@ -215,7 +213,7 @@ class Buttons:
             self.pic_3_label.place_forget()
             self.pic_4_label.place_forget()
 
-            self.pic_2_label.place(x=250, y=80)
+            self.pic_2_label.place(x=258, y=80)
 
         elif self.old_pdf_angle == 270:
             self.pic_2_label.place_forget()
@@ -229,5 +227,4 @@ class Buttons:
             self.pic_2_label.place_forget()
             self.pic_3_label.place_forget()
 
-            self.pic_4_label.place(x=250, y=80)
-
+            self.pic_4_label.place(x=258, y=80)
