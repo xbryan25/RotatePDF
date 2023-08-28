@@ -1,4 +1,5 @@
 import customtkinter as ctk
+import ctypes as ct
 import buttons
 
 
@@ -12,6 +13,12 @@ def main():
     app.iconbitmap(r'Assets/icon.ico')
     app.resizable(False, False)
     app.title("RotatePDF v1.0 by xbryan")
+
+    # Set icon in taskbar
+    myappid = u'mycompany.myproduct.subproduct.version'
+    ct.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+
+    app.eval("tk::PlaceWindow . center")
 
     buttons.Buttons(app)
 
