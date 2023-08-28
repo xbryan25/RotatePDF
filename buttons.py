@@ -138,7 +138,7 @@ class Buttons:
                 self.new_pdf_angle = (pdf.pages[0].get('/Rotate'))
                 self.old_pdf_angle = (pdf.pages[0].get('/Rotate'))
 
-            if self.new_pdf_angle == 360 or self.old_pdf_angle == 360:
+            if self.new_pdf_angle >= 360 or self.old_pdf_angle >= 360:
                 self.new_pdf_angle = 0
                 self.old_pdf_angle = 0
 
