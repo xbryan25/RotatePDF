@@ -11,7 +11,7 @@ def main():
     app.geometry("440x260")
     app.iconbitmap(r'Assets/icon.ico')
     app.resizable(False, False)
-    app.title("RotatePDF by xbryan")
+    app.title("RotatePDF v1.0 by xbryan")
 
     buttons.Buttons(app)
 
